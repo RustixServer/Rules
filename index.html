@@ -54,33 +54,56 @@
 
   /* ЛЕВАЯ ПАНЕЛЬ */
   .sidebar {
-    flex: 0 0 180px;
+    flex: 0 0 240px;
     padding-top: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Центрируем аватарку и ник */
+    align-items: center;
   }
 
   .avatar {
     width: 140px;
     height: 140px;
-    border-radius: 50%; /* Делает аватарку круглой */
-    border: 3px solid #b0b0b0; /* Серая рамка */
+    border-radius: 50%;
+    border: 3px solid #b0b0b0;
     margin-bottom: 15px;
-    object-fit: cover; /* Чтобы картинка не сплющивалась */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Тень для объема */
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     background-color: #4a4a4a;
   }
 
+  /* НИК С ТЕГОМ [Creator] И ГАЛОЧКОЙ */
   .nick {
-    font-size: 22px;
+    font-size: 22px;            /* Было 18px — стало 22px */
     font-weight: 600;
-    color: #ffffff;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
     border-bottom: 2px solid #b0b0b0;
-    word-break: break-word;
     width: 100%;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    white-space: nowrap;
+  }
+
+  .nick .creator {
+    color: #7fb8e0;
+    font-weight: 600;
+  }
+
+  .nick .name {
+    color: #7fb8e0;
+  }
+
+  /* ГАЛОЧКА */
+  .verified {
+    width: 20px;                /* Чуть крупнее под новый размер */
+    height: 20px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+    vertical-align: middle;
   }
 
   /* ПРАВАЯ ПАНЕЛЬ — САМИ ПРАВИЛА */
@@ -129,6 +152,13 @@
     .header h1 {
       font-size: 32px;
     }
+    .nick {
+      font-size: 18px;          /* На телефоне чуть меньше, чтоб не вылезало */
+    }
+    .verified {
+      width: 17px;
+      height: 17px;
+    }
   }
 </style>
 </head>
@@ -142,9 +172,20 @@
   <div class="container">
 
     <aside class="sidebar">
-      <!-- ТУТ ТВОЯ АВАТАРКА -->
+
+      <!-- АВАТАРКА -->
       <img src="avatar.png" alt="Tylenchik Avatar" class="avatar">
-      <div class="nick">Tylenchik</div>
+
+      <!-- НИК С [Creator] И ГАЛОЧКОЙ В ОДНОЙ СТРОКЕ -->
+      <div class="nick">
+        <span class="creator">[Creator]</span>
+        <span class="name">Tylenchik</span>
+        <svg class="verified" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="11" fill="#7fb8e0"/>
+          <path d="M7 12.5L10.5 16L17 9" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
     </aside>
 
     <main class="rules">
